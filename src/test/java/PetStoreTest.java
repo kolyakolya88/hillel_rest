@@ -2,8 +2,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.hillel.enums.PetStoreEnums;
-import org.hillel.records.Pet;
+import enums.PetStoreEnums;
+import records.Pet;
 import org.junit.jupiter.api.*;
 import org.testng.asserts.SoftAssert;
 

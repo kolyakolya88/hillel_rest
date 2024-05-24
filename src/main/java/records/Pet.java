@@ -1,4 +1,4 @@
-package org.hillel.records;
+package records;
 
 /**
  * This record represents a Pet in the Pet Store.

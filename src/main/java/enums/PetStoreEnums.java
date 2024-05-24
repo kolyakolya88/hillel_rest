@@ -1,4 +1,4 @@
-package org.hillel.enums;
+package enums;
 
 /**
  * This enum represents the different API paths for the Pet Store.
