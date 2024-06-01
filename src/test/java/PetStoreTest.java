@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.junit.CucumberOptions;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -14,6 +15,7 @@ import java.util.Properties;
 import static io.restassured.RestAssured.given;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@CucumberOptions(features = "src/test/resources")
 public class PetStoreTest {
 
     private Pet pet;
@@ -21,6 +23,9 @@ public class PetStoreTest {
     private SoftAssert softAssert;
     private ObjectMapper objectMapper;
 
+    /**
+     * This method is executed before each test method.
+     */
     @BeforeEach
     public void setUp() {
         prop = new Properties();
@@ -38,6 +43,9 @@ public class PetStoreTest {
         pet = new Pet(Integer.parseInt(prop.getProperty("petId")), prop.getProperty("petName"), prop.getProperty("petStatus"));
     }
 
+    /**
+     * This method is executed after each test method.
+     */
     @Test
     @Order(1)
     public void createPet() {
@@ -59,6 +67,9 @@ public class PetStoreTest {
         System.out.println("Created Pet JSON: " + response.asString());
     }
 
+    /**
+     * This test case reads the pet from the Pet Store API and validates the response.
+     */
     @Test
     @Order(2)
     public void readPet() {
@@ -72,6 +83,9 @@ public class PetStoreTest {
         System.out.println("Read Pet JSON: " + response.asString());
     }
 
+    /**
+     * This test case updates the pet in the Pet Store API and validates the response.
+     */
     @Test
     @Order(3)
     public void updatePet() {
@@ -95,6 +109,9 @@ public class PetStoreTest {
         System.out.println("Updated Pet JSON: " + response.asString());
     }
 
+    /**
+     * This test case deletes the pet from the Pet Store API and validates the response.
+     */
     @Test
     @Order(4)
     public void deletePet() {
